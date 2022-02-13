@@ -88,7 +88,7 @@
                 Laravel
             </div>
 
-            <a href="">
+            <a href="{{ route('test.index') }}">
                 <button>
                     ادفع
                 </button>
