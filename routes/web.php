@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestControllerController;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +16,9 @@ use App\Http\Controllers\TestControllerController;
 */
 
 Route::resource('test', 'TestControllerController');
+
+Route::get('/cookie/set', 'CookieController@setCookie');
+Route::get('/cookie/get', 'CookieController@getCookie');
 
 
 Route::get('/', function () {
