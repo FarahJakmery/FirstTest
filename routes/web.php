@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestControllerController;
+use App\Http\Controllers\TestRemembermeController;
 use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,18 @@ Route::resource('test', 'TestControllerController');
 
 Route::get('/cookie/set', 'CookieController@setCookie');
 Route::get('/cookie/get', 'CookieController@getCookie');
+
+#Remember me functionality in Laravel
+Route::get('/user-register', 'TestRemembermeController@registerform')->name('user.register');
+Route::post('/post-registration', 'TestRemembermeController@postRegistration')->name('post.register');
+
+Route::get('/user-login', 'TestRemembermeController@loginform')->name('user.login');
+Route::post('/check-login', 'TestRemembermeController@checklogin')->name('post.login');
+
+Route::get('/user-dashboard', 'TestRemembermeController@dashboard')->name('user.dashboard');
+Route::get('logout', 'TestRemembermeController@logout')->name('logout');
+
+
 
 
 Route::get('/', function () {
