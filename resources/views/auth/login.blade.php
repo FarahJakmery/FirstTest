@@ -5,10 +5,21 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    @php
+                        if (isset($_COOKIE['login_email']) && isset($_COOKIE['login_pass'])) {
+                            $login_email = $_COOKIE['login_email'];
+                            $login_pass = $_COOKIE['login_pass'];
+                            $is_remember = "checked='checked'";
+                        } else {
+                            $login_email = '';
+                            $login_pass = '';
+                            $is_remember = '';
+                        }
+                    @endphp
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('post.login') }}">
                             @csrf
 
                             <div class="form-group row">
@@ -47,8 +58,8 @@
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="remember" name="remember"
-                                            id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" value="rememberme" name="rememberme"
+                                            {{ $is_remember }} id="rememberme" {{ old('rememberme') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
