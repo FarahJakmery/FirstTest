@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestControllerController;
 use App\Http\Controllers\TestRemembermeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -32,6 +33,14 @@ Route::post('/check-login', 'TestRemembermeController@checklogin')->name('post.l
 Route::get('/user-dashboard', 'TestRemembermeController@dashboard')->name('user.dashboard');
 Route::get('logout', 'TestRemembermeController@logout')->name('logout');
 
+/* Products Routs */
+Route::resource('/products', 'ProductController');
+
+/* Cart Routes */
+Route::get('cart', 'ProductController@cart')->name('cart');
+Route::get('add-to-cart/{id}', 'ProductController@addToCart')->name('add.to.cart');
+Route::patch('update-cart', 'ProductController@update')->name('update.cart');
+Route::delete('remove-from-cart', 'ProductController@remove')->name('remove.from.cart');
 
 
 
